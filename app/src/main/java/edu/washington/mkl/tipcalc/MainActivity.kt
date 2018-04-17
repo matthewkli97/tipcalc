@@ -48,8 +48,10 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 sb.insert(sb.length - 2, '.')
+                var split = sb.toString().split(".")
 
-                val output = "$" + NumberFormat.getNumberInstance(Locale.US).format(sb.toString().toDouble())
+                //fix bug which blocked adding 0 to end
+                val output = "$" + NumberFormat.getNumberInstance(Locale.US).format(split[0].toDouble()) + "." + split[1]
 
                 inputValue.setText(output);
                 inputValue.setSelection(output.length);
